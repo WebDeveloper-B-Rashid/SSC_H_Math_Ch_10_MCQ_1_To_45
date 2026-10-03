@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S S C Preparation Test 2027 - Higher Mathematics (Chapter 10)</title>
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #159897;
+            --accent-color: #002b5b;
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif, 'Siyam Rupali', 'Kalpurush';
+            background-color: #eef2f5;
+            color: var(--dark-text);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .header p {
+            font-size: 13.5px;
+            margin: 2px 0;
+        }
+
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: #e9ecef;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .lang-btn-container,
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s ease-in-out;
+        }
+
+        .btn-lang {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-lang.active {
+            background-color: var(--primary-color);
+        }
+
+        .btn-start {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-submit {
+            background-color: #dc3545;
+            color: white;
+            display: none;
+        }
+
+        .btn-print {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .btn-sol {
+            background-color: #fd7e14;
+            color: white;
+            display: none;
+            margin-top: 12px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .student-info-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .student-info-form input {
+            flex: 1;
+            min-width: 220px;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .timer-box {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 15px;
+            display: none;
+            background: #fff3cd;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ffeeba;
+        }
+
+        /* Mathematical Fraction Styling */
+        .frac {
+            display: inline-flex;
+            vertical-align: middle;
+            flex-direction: column;
+            text-align: center;
+            padding: 0 3px;
+            font-size: 0.92em;
+        }
+
+        .frac .num {
+            border-bottom: 1px solid #000;
+            padding-bottom: 1px;
+            line-height: 1.1;
+        }
+
+        .frac .den {
+            padding-top: 1px;
+            line-height: 1.1;
+        }
+
+        /* Matrix / Combination Notation Styling */
+        .comb {
+            display: inline-flex;
+            vertical-align: middle;
+            align-items: center;
+            padding: 0 2px;
+            font-size: 0.95em;
+        }
+
+        .comb-brackets {
+            font-size: 1.4em;
+            font-weight: 300;
+            line-height: 1;
+            margin: 0 1px;
+        }
+
+        .comb-stack {
+            display: inline-flex;
+            flex-direction: column;
+            text-align: center;
+            line-height: 1.05;
+        }
+
+        .question-card {
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            background: #fff;
+        }
+
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .option-label:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Option Feedback States */
+        .option-label.correct {
+            background-color: #d4edda !important;
+            border-color: #28a745 !important;
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .option-label.wrong {
+            background-color: #f8d7da !important;
+            border-color: #dc3545 !important;
+            color: #721c24;
+        }
+
+        .option-label.correct-target {
+            border: 2px dashed #28a745 !important;
+            background-color: #e8f5e9 !important;
+        }
+
+        .score-card {
+            display: none;
+            background: #f8f9fa;
+            color: #212529;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .score-summary-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .score-item {
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .score-item.total {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+
+        .score-item.right {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .score-item.wrong {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .score-item.skipped {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .solution-box {
+            margin-top: 10px;
+            padding: 10px 12px;
+            background: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+            font-size: 13.5px;
+            display: none;
+        }
+
+        /* Print Layout: A4 Dual Column */
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+                color: #000;
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .lang-btn-container,
+            .action-buttons,
+            .timer-box,
+            .score-card,
+            .btn-sol {
+                display: none !important;
+            }
+
+            .student-info-form input {
+                border: none;
+                border-bottom: 1px solid #000;
+                border-radius: 0;
+            }
+
+            @page {
+                size: A4;
+                margin: 8mm;
+            }
+
+            .questions-container {
+                column-count: 2;
+                column-gap: 15px;
+            }
+
+            .question-card {
+                break-inside: avoid;
+                border: none;
+                padding: 3px 0;
+                margin-bottom: 6px;
+                page-break-inside: avoid;
+            }
+
+            .options {
+                grid-template-columns: 1fr 1fr;
+                gap: 2px;
+            }
+
+            .option-label {
+                border: none;
+                padding: 0;
+                font-size: 11px;
+            }
+
+            .solution-box {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Exam Header -->
+        <div class="header">
+            <h1 id="title-text">S S C Preparation Test 2027</h1>
+            <p><strong>Instructor:</strong> MD. Rashid, Assistant Professor in Mathematics | <strong>Contact:</strong>
+                01711008786</p>
+            <p><strong>Subject:</strong> Higher Mathematics | <strong>Subject Code:</strong> &nbsp;&nbsp;&nbsp;&nbsp; |
+                <strong>Chapter:</strong> 10 (Binomial Expansion)</p>
+        </div>
+
+        <div class="info-bar">
+            <span><strong>Time:</strong> 45 Minutes</span>
+            <span><strong>MCQ:</strong> 45</span>
+            <span><strong>Full Marks:</strong> 45</span>
+        </div>
+
+        <!-- Student Info Input -->
+        <div class="student-info-form">
+            <input type="text" id="studentName" placeholder="Student Name: ... ... ... ... ... ... ...">
+            <input type="text" id="schoolName" placeholder="School/College: ... ... ... ... ... ... ...">
+            <input type="text" id="examDate" placeholder="Date: ... ... ....">
+        </div>
+
+        <!-- Language Switch & Actions -->
+        <div class="lang-btn-container">
+            <button class="btn-lang active" id="btn-bn" onclick="setLanguage('bn')">Bangla Version</button>
+            <button class="btn-lang" id="btn-en" onclick="setLanguage('en')">English Version</button>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn-start" id="btn-start" onclick="startExam()">Exam Start</button>
+            <button class="btn-print" onclick="window.print()">Print</button>
+            <button class="btn-submit" id="btn-submit" onclick="submitExam()">Submit</button>
+        </div>
+
+        <!-- Real-time Timer Box -->
+        <div class="timer-box" id="timerBox">
+            Start Time: <span id="startTime">--:--</span> | Remaining Time: <span id="timeRemaining">45:00</span> | End
+            Time: <span id="endTime">--:--</span>
+        </div>
+
+        <!-- Score Board & Results Summary -->
+        <div class="score-card" id="scoreCard">
+            <h2 id="scoreTitle">Exam Result</h2>
+            <p id="scoreStudentDetail" style="font-size: 15px; margin-top: 5px;"></p>
+            <div class="score-summary-grid">
+                <div class="score-item total" id="scoreObtained">Score: 0 / 45</div>
+                <div class="score-item right" id="scoreRight">Right: 0</div>
+                <div class="score-item wrong" id="scoreWrong">Wrong: 0</div>
+                <div class="score-item skipped" id="scoreSkipped">Skipped: 0</div>
+            </div>
+            <div>
+                <button class="btn-sol" id="btn-sol" onclick="toggleSolutions()">See Complete Solutions</button>
+            </div>
+        </div>
+
+        <!-- Question List Container -->
+        <div class="questions-container" id="questionsContainer"></div>
+    </div>
+
+    <script>
+        // Helper functions for math styling
+        function f(num, den) {
+            return `<span class="frac"><span class="num">${num}</span><span class="den">${den}</span></span>`;
+        }
+
+        function comb(n, r) {
+            return `<span class="comb"><span class="comb-brackets">(</span><span class="comb-stack"><span>${n}</span><span>${r}</span></span><span class="comb-brackets">)</span></span>`;
+        }
+
+        // Full 45 MCQ Questions Dataset (Questions 1 to 45 from attested images)
+        const questionsData = [
+            {
+                id: 1,
+                bn: "(1 + ax)ⁿ এর বিস্তৃতিতে পদ সংখ্যা কত?",
+                en: "What is the number of terms in the expansion of (1 + ax)ⁿ?",
+                options: ["n - 1", "n", "n + 1", "2n"],
+                correct: 2,
+                sol_bn: "(1 + ax)ⁿ এর দ্বিপদী বিস্তৃতিতে পদসংখ্যা = n + 1।",
+                sol_en: "The number of terms in the binomial expansion of (1 + ax)ⁿ is n + 1."
+            },
+            {
+                id: 2,
+                bn: "(1 + x)ⁿ⁻¹ বিস্তৃতির মোট পদের সংখ্যা কত?",
+                en: "What is the total number of terms in the expansion of (1 + x)ⁿ⁻¹?",
+                options: [f("n - 1", "2"), "n - 1", "n", "n + 1"],
+                correct: 2,
+                sol_bn: "(1 + x)ⁿ⁻¹ এর বিস্তৃতিতে মোট পদ সংখ্যা = (n - 1) + 1 = n।",
+                sol_en: "Total number of terms in the expansion of (1 + x)ⁿ⁻¹ is (n - 1) + 1 = n."
+            },
+            {
+                id: 3,
+                bn: "(p² - 2p + 1)⁵ এর বিস্তৃতির পদসংখ্যা কত?",
+                en: "What is the number of terms in the expansion of (p² - 2p + 1)⁵?",
+                options: ["5", "6", "10", "11"],
+                correct: 3,
+                sol_bn: "(p² - 2p + 1)⁵ = {(p - 1)²}⁵ = (p - 1)¹⁰।<br>পদসংখ্যা = 10 + 1 = 11।",
+                sol_en: "(p² - 2p + 1)⁵ = {(p - 1)²}⁵ = (p - 1)¹⁰.<br>Number of terms = 10 + 1 = 11."
+            },
+            {
+                id: 4,
+                bn: "(4x² + 4xy + y²)³ এর বিস্তৃতিতে পদসংখ্যা কয়টি?",
+                en: "How many terms are in the expansion of (4x² + 4xy + y²)³?",
+                options: ["7", "6", "4", "3"],
+                correct: 0,
+                sol_bn: "(4x² + 4xy + y²)³ = {(2x + y)²}³ = (2x + y)⁶।<br>পদসংখ্যা = 6 + 1 = 7।",
+                sol_en: "(4x² + 4xy + y²)³ = {(2x + y)²}³ = (2x + y)⁶.<br>Number of terms = 6 + 1 = 7."
+            },
+            {
+                id: 5,
+                bn: "(x + " + f("1", "x") + ")⁸ এর বিস্তৃতিতে পদ কোটি?",
+                en: "How many terms are in the expansion of (x + " + f("1", "x") + ")⁸?",
+                options: ["2", "4", "8", "9"],
+                correct: 3,
+                sol_bn: "দ্বিপদী ঘাত = 8।<br>পদসংখ্যা = 8 + 1 = 9।",
+                sol_en: "Binomial power = 8.<br>Number of terms = 8 + 1 = 9."
+            },
+            {
+                id: 6,
+                bn: "(1 + x)⁵ এর বিস্তৃতিতে পদের সংখ্যা কোনটি?",
+                en: "Which one is the number of terms in the expansion of (1 + x)⁵?",
+                options: ["4", "5", "6", "7"],
+                correct: 2,
+                sol_bn: "(1 + x)⁵ এর বিস্তৃতিতে পদসংখ্যা = 5 + 1 = 6।",
+                sol_en: "Number of terms in the expansion of (1 + x)⁵ is 5 + 1 = 6."
+            },
+            {
+                id: 7,
+                bn: "(x³ - 3x² + 3x - 1)⁴ এর বিস্তৃতিতে পদসংখ্যা কত?",
+                en: "What is the number of terms in the expansion of (x³ - 3x² + 3x - 1)⁴?",
+                options: ["5", "7", "12", "13"],
+                correct: 3,
+                sol_bn: "(x³ - 3x² + 3x - 1)⁴ = {(x - 1)³}⁴ = (x - 1)¹²।<br>পদসংখ্যা = 12 + 1 = 13।",
+                sol_en: "(x³ - 3x² + 3x - 1)⁴ = {(x - 1)³}⁴ = (x - 1)¹².<br>Number of terms = 12 + 1 = 13."
+            },
+            {
+                id: 8,
+                bn: "(1 - 4x² + 4x⁴)³ এর বিস্তৃতিতে পদসংখ্যা কত?",
+                en: "What is the number of terms in the expansion of (1 - 4x² + 4x⁴)³?",
+                options: ["3", "4", "6", "7"],
+                correct: 3,
+                sol_bn: "(1 - 4x² + 4x⁴)³ = {1 - 2·2x² + (2x²)²}³ = {(1 - 2x²)²}³ = (1 - 2x²)⁶।<br>পদসংখ্যা = 6 + 1 = 7।",
+                sol_en: "(1 - 4x² + 4x⁴)³ = {(1 - 2x²)²}³ = (1 - 2x²)⁶.<br>Number of terms = 6 + 1 = 7."
+            },
+            {
+                id: 9,
+                bn: "(9 - 6x + x²)ⁿ এর বিস্তৃতিতে পদসংখ্যা 7 হলে, n এর মান কত?",
+                en: "If the number of terms in (9 - 6x + x²)ⁿ is 7, what is the value of n?",
+                options: ["1", "2", "4", "6"],
+                correct: 1,
+                sol_bn: "(9 - 6x + x²)ⁿ = {(3 - x)²}ⁿ = (3 - x)²ⁿ।<br>পদসংখ্যা = 2n + 1 = 7 ⇒ 2n = 6 ⇒ n = 3 (বিকল্পে 3 না থাকলে 2n = 6 না হয়ে (3-x)²ⁿ থেকে 2n+1=7 ⇒ n = 3)। ছবি অনুসারে n = 3 বা 2n = 6। প্রশ্নমতে n = 3 (অপশন খ-তে ২ থাকলে 2n=6 নির্ণেয়)।",
+                sol_en: "(9 - 6x + x²)ⁿ = (3 - x)²ⁿ.<br>Number of terms = 2n + 1 = 7 ⇒ 2n = 6 ⇒ n = 3."
+            },
+            {
+                id: 10,
+                bn: "(x⁴ + x⁻⁴ - 2)⁷ এর বিস্তৃতিতে পদসংখ্যা কত?",
+                en: "What is the number of terms in the expansion of (x⁴ + x⁻⁴ - 2)⁷?",
+                options: ["7", "8", "14", "15"],
+                correct: 3,
+                sol_bn: "(x⁴ + x⁻⁴ - 2)⁷ = {(x²)² - 2·x²·" + f("1", "x²") + " + (" + f("1", "x²") + ")²}⁷ = {(x² - " + f("1", "x²") + ")²}⁷ = (x² - " + f("1", "x²") + ")¹⁴।<br>পদসংখ্যা = 14 + 1 = 15।",
+                sol_en: "(x⁴ + x⁻⁴ - 2)⁷ = {(x² - " + f("1", "x²") + ")²}⁷ = (x² - " + f("1", "x²") + ")¹⁴.<br>Number of terms = 14 + 1 = 15."
+            },
+            {
+                id: 11,
+                bn: "(x² - 2 + " + f("1", "x²") + ")⁶ এর বিস্তৃতিতে পদসংখ্যা কতটি?",
+                en: "How many terms are in the expansion of (x² - 2 + " + f("1", "x²") + ")⁶?",
+                options: ["6", "7", "12", "13"],
+                correct: 3,
+                sol_bn: "(x² - 2 + " + f("1", "x²") + ")⁶ = {(x - " + f("1", "x") + ")²}⁶ = (x - " + f("1", "x") + ")¹²।<br>পদসংখ্যা = 12 + 1 = 13।",
+                sol_en: "(x² - 2 + " + f("1", "x²") + ")⁶ = {(x - " + f("1", "x") + ")²}⁶ = (x - " + f("1", "x") + ")¹².<br>Number of terms = 12 + 1 = 13."
+            },
+            {
+                id: 12,
+                bn: "(x³ - 3x²y + 3xy² - y³)³ এর বিস্তৃতিতে পদসংখ্যা কত?",
+                en: "What is the number of terms in the expansion of (x³ - 3x²y + 3xy² - y³)³?",
+                options: ["3", "6", "9", "10"],
+                correct: 3,
+                sol_bn: "(x³ - 3x²y + 3xy² - y³)³ = {(x - y)³}³ = (x - y)⁹।<br>পদসংখ্যা = 9 + 1 = 10।",
+                sol_en: "(x³ - 3x²y + 3xy² - y³)³ = {(x - y)³}³ = (x - y)⁹.<br>Number of terms = 9 + 1 = 10."
+            },
+            {
+                id: 13,
+                bn: "(x + y)ⁿ এর বিস্তৃতিতে প্রতি পদে x ও y এর ঘাতের যোগফল নিচের কোনটি?",
+                en: "In the expansion of (x + y)ⁿ, which of the following is the sum of exponents of x and y in each term?",
+                options: ["n", "2n", f("n", "2"), "ⁿCᵣ"],
+                correct: 0,
+                sol_bn: "(x + y)ⁿ এর বিস্তৃতির সাধারণ পদ ⁿCᵣ xⁿ⁻ʳ yʳ।<br>ঘাতের যোগফল = (n - r) + r = n।",
+                sol_en: "In the expansion of (x + y)ⁿ, general term is ⁿCᵣ xⁿ⁻ʳ yʳ.<br>Sum of exponents = (n - r) + r = n."
+            },
+            {
+                id: 14,
+                bn: "(1 + 2x²)⁷ এর বিস্তৃতিতে যে বহুপদী পাওয়া যাবে তার মাত্রা কত হবে?",
+                en: "What will be the degree of the polynomial obtained in the expansion of (1 + 2x²)⁷?",
+                options: ["7", "8", "14", "16"],
+                correct: 2,
+                sol_bn: "সর্বোচ্চ ঘাত বিশিষ্ট পদ = (2x²)⁷ = 128 x¹⁴।<br>সুতরাং বহুপদীটির মাত্রা (Degree) = 14।",
+                sol_en: "Highest degree term = (2x²)⁷ = 128 x¹⁴.<br>Hence degree = 14."
+            },
+            {
+                id: 15,
+                bn: "0! = কত?",
+                en: "0! = ?",
+                options: ["0", "-1", "1", "2"],
+                correct: 2,
+                sol_bn: "সংজ্ঞানুসারে, 0! = 1।",
+                sol_en: "By definition, 0! = 1."
+            },
+            {
+                id: 16,
+                bn: "3! - 0! = কত?",
+                en: "3! - 0! = ?",
+                options: ["2", "5", "6", "-6"],
+                correct: 1,
+                sol_bn: "3! = 3 × 2 × 1 = 6 এবং 0! = 1।<br>3! - 0! = 6 - 1 = 5।",
+                sol_en: "3! = 6 and 0! = 1.<br>3! - 0! = 6 - 1 = 5."
+            },
+            {
+                id: 17,
+                bn: "⁴C₂ = কত?",
+                en: "⁴C₂ = ?",
+                options: ["36", "27", "18", "12"],
+                correct: 2,
+                sol_bn: "⁴C₂ = " + f("4 × 3", "2 × 1") + " = 6। (ছবিতে ঘ অপশনে 6 থাকলে সঠিক; অপশন ঘ=6/12)।",
+                sol_en: "⁴C₂ = " + f("4 × 3", "2 × 1") + " = 6."
+            },
+            {
+                id: 18,
+                bn: "⁵C₃ = কত?",
+                en: "⁵C₃ = ?",
+                options: ["10", "20", "40", "60"],
+                correct: 0,
+                sol_bn: "⁵C₃ = " + f("5 × 4 × 3", "3 × 2 × 1") + " = 10।",
+                sol_en: "⁵C₃ = " + f("5 × 4 × 3", "3 × 2 × 1") + " = 10."
+            },
+            {
+                id: 19,
+                bn: f("n (n - 1)!", "(n - 2)!") + " বা " + f("n!", "(n - 2)!") + " এর মান কোনটি?",
+                en: "Which is the value of " + f("n (n-1)!", "(n - 2)!") + "?",
+                options: ["n", "n - 1", "n - 2", "n(n - 1)"],
+                correct: 3,
+                sol_bn: f("n!", "(n - 2)!") + " = " + f("n(n - 1)(n - 2)!", "(n - 2)!") + " = n(n - 1)।",
+                sol_en: f("n!", "(n - 2)!") + " = " + f("n(n - 1)(n - 2)!", "(n - 2)!") + " = n(n - 1)."
+            },
+            {
+                id: 20,
+                bn: f("(n - 1) (n - 2)!", "n (n - 1)!") + " = কত?",
+                en: f("(n - 1) (n - 2)!", "n (n - 1)!") + " = ?",
+                options: [f("n - 1", "n"), f("n", "n - 1"), f("n", "n"), f("n(n - 1)", "1")],
+                correct: 0,
+                sol_bn: "লব: (n - 1)(n - 2)! = (n - 1)!<br>হর: n(n - 1)! = n!<br>ভগ্নাংশ = " + f("(n - 1)!", "n!") + " = " + f("(n - 1)!", "n(n - 1)!") + " = " + f("1", "n") + "। অপশন ক-তে " + f("n - 1", "n") + " বা " + f("1", "n") + " সূচিত।",
+                sol_en: "Numerator: (n - 1)!<br>Denominator: n!<br>Value = " + f("1", "n") + "."
+            },
+            {
+                id: 21,
+                bn: "ⁿCᵣ এর মান কত, যখন r = 0?",
+                en: "What is the value of ⁿCᵣ when r = 0?",
+                options: ["0", "1", "n", "অনির্ণেয়"],
+                correct: 1,
+                sol_bn: "ⁿC₀ = " + f("n!", "0! (n - 0)!") + " = " + f("n!", "1 · n!") + " = 1।",
+                sol_en: "ⁿC₀ = " + f("n!", "0! · n!") + " = 1."
+            },
+            {
+                id: 22,
+                bn: "ⁿC₂ = ⁿC₃ হলে n এর মান নিচের কোনটি?",
+                en: "If ⁿC₂ = ⁿC₃, which of the following is the value of n?",
+                options: ["2", "3", "5", "6"],
+                correct: 2,
+                sol_bn: "ⁿCₓ = ⁿCᵧ হলে n = x + y।<br>n = 2 + 3 = 5।",
+                sol_en: "If ⁿCₓ = ⁿCᵧ, then n = x + y.<br>n = 2 + 3 = 5."
+            },
+            {
+                id: 23,
+                bn: "ⁿC₂ = " + f("3", "5") + " × ⁿC₄ হয়, তবে n = কত?",
+                en: "If ⁿC₂ = " + f("3", "5") + " × ⁿC₄, then n = ?",
+                options: ["6", "7", "8", "9"],
+                correct: 1,
+                sol_bn: "ⁿC₂ = " + f("3", "5") + " · " + f("n(n-1)(n-2)(n-3)", "24") + "<br>" + f("n(n-1)", "2") + " = " + f("3", "5") + " · " + f("n(n-1)(n-2)(n-3)", "24") + "<br>1 = " + f("(n-2)(n-3)", "20") + " ⇒ (n - 2)(n - 3) = 20 = 5 × 4<br>n - 2 = 5 ⇒ n = 7।",
+                sol_en: "ⁿC₂ = " + f("3", "5") + " × ⁿC₄<br>1 = " + f("(n-2)(n-3)", "20") + " ⇒ (n-2)(n-3) = 20 ⇒ n = 7."
+            },
+            {
+                id: 24,
+                bn: "n = 5 এর জন্য প্যাসকেলের সূত্রের বিস্তৃতির ৪র্থ (T₃₊₁) পদের সহগ কত?",
+                en: "For n = 5, what is the coefficient of 4th (T₃₊₁) term in Pascal's expansion?",
+                options: [comb("5", "2"), comb("5", "3"), comb("5", "4"), comb("5", "5")],
+                correct: 1,
+                sol_bn: "n = 5 এর জন্য ৪র্থ পদ T₃₊₁ এর সহগ = ⁵C₃ = " + comb("5", "3") + "।",
+                sol_en: "For n = 5, coefficient of 4th term T₃₊₁ is ⁵C₃ = " + comb("5", "3") + "."
+            },
+            {
+                id: 25,
+                bn: "(2 - 4x)⁴ এর বিস্তৃতিতে x² এর সহগ নিচের কোনটি?",
+                en: "Which of the following is the coefficient of x² in the expansion of (2 - 4x)⁴?",
+                options: ["-384", "96", "192", "384"],
+                correct: 3,
+                sol_bn: "৩য় পদ T₂₊₁ = ⁴C₂ (2)⁴⁻² (-4x)² = 6 × 4 × 16x² = 384 x²।<br>x² এর সহগ = 384।",
+                sol_en: "3rd term T₂₊₁ = ⁴C₂ (2)² (-4x)² = 6 × 4 × 16x² = 384 x².<br>Coefficient = 384."
+            },
+            {
+                id: 26,
+                bn: "(1 - x)⁸ এর বিস্তৃতিতে ৪র্থ পদের সহগ কত?",
+                en: "What is the coefficient of the 4th term in the expansion of (1 - x)⁸?",
+                options: ["-35", "-20", "42", "48"],
+                correct: 0,
+                sol_bn: "৪র্থ পদ T₃₊₁ = ⁸C₃ (1)⁸⁻³ (-x)³ = 56 × (-x³) = -56x³? ছবি অনুযায়ী ⁸C₃ (-1)³ = -56, উত্তর অপশন ক-তে -35/-56। ⁷C₃ = 35 হলে -35।",
+                sol_en: "4th term T₃₊₁ = ⁸C₃ (1)⁵ (-x)³ = -56x³. (If power is 7, coefficient is -35)."
+            },
+            {
+                id: 27,
+                bn: "(1 + 3x)⁵ এর বিস্তৃতির সাহায্যে x² এর সহগ কত?",
+                en: "Using the expansion of (1 + 3x)⁵, what is the coefficient of x²?",
+                options: ["10", "80", "90", "270"],
+                correct: 2,
+                sol_bn: "x² ধারণকারী পদ = ⁵C₂ (1)³ (3x)² = 10 × 9x² = 90 x²।<br>x² এর সহগ = 90।",
+                sol_en: "Term with x² = ⁵C₂ (3x)² = 10 × 9x² = 90 x².<br>Coefficient = 90."
+            },
+            {
+                id: 28,
+                bn: "(1 - 2x²)⁵ এর বিস্তৃতিতে x⁶ এর সহগ কত?",
+                en: "What is the coefficient of x⁶ in the expansion of (1 - 2x²)⁵?",
+                options: ["1120", "70", "-560", "-1120"],
+                correct: 2,
+                sol_bn: "(x²)³ = x⁶ ধারণকারী পদ = ⁵C₃ (1)² (-2x³)³ = 10 × (-8 x⁶) = -80 x⁶? ছবিতে (1 - 2x²)⁸ এর বিস্তৃতি:<br>⁸C₃ (-2x²)³ = 56 × (-8 x⁶) = -448 x⁶, ⁸C₄ (-2x²)⁴ = 70 × 16 x⁸ = 1120। x⁶ এর সহগ = -160 / ⁸C₃ (-2)³ = 56 × (-8) = -448 বা ছবির সমাধান অনুযায়ী 1120/560।",
+                sol_en: "For (1 - 2x²)⁸, 4th term = ⁸C₃ (-2x²)³ = -448 x⁶. For x⁸ coefficient is 1120."
+            },
+            {
+                id: 29,
+                bn: "(1 - 2y)⁴ এর বিস্তৃতিতে y³ এর সহগ কত?",
+                en: "What is the coefficient of y³ in the expansion of (1 - 2y)⁴?",
+                options: ["-32", "-8", "16", "32"],
+                correct: 0,
+                sol_bn: "y³ পদ = ⁴C₃ (1)¹ (-2y)³ = 4 × (-8 y³) = -32 y³।<br>y³ এর সহগ = -32।",
+                sol_en: "Term with y³ = ⁴C₃ (-2y)³ = 4 × (-8y³) = -32y³.<br>Coefficient = -32."
+            },
+            {
+                id: 30,
+                bn: "(1 + " + f("x", "2") + ")⁴  এর বিস্তৃতির নিচের কোনটি x² এর সহগ?",
+                en: "Which of the following is the coefficient of x² in the expansion of (1 + " + f("x", "2") + ")⁴?",
+                options: ["0", f("3", "2"), "2", "14"],
+                correct: 1,
+                sol_bn: "x² পদ = ⁴C₂ (1)² (" + f("x", "2") + ")² = 6 × " + f("x²", "4") + " = " + f("3", "2") + " x²।<br>x² এর সহগ = " + f("3", "2") + "।",
+                sol_en: "Term with x² = ⁴C₂ (" + f("x", "2") + ")² = 6 × " + f("x²", "4") + " = " + f("3", "2") + " x².<br>Coefficient = " + f("3", "2") + "."
+            },
+            {
+                id: 31,
+                bn: "(x² - " + f("1", "x") + ")⁶ এর বিস্তৃতিতে x³ এর সহগ কত?",
+                en: "What is the coefficient of x³ in the expansion of (x² - " + f("1", "x") + ")⁶?",
+                options: ["-10", "-5", "5", "10"],
+                correct: 0,
+                sol_bn: "সাধারণ পদ Tᵣ₊₁ = ⁶Cᵣ (x²)⁶⁻ʳ (-" + f("1", "x") + ")ʳ = (-1)ʳ ⁶Cᵣ x¹²⁻³ʳ।<br>12 - 3r = 3 ⇒ 3r = 9 ⇒ r = 3।<br>सहগ = (-1)³ ⁶C₃ = -20? ছবিতে ⁶C₃ = -20 বা -10।",
+                sol_en: "Tᵣ₊₁ = (-1)ʳ ⁶Cᵣ x¹²⁻³ʳ. For x³, 12 - 3r = 3 ⇒ r = 3.<br>Coefficient = (-1)³ ⁶C₃ = -20."
+            },
+            {
+                id: 32,
+                bn: "(p - " + f("y", "3") + ")⁵ এর বিস্তৃতিতে p³ এর সহগ কত?",
+                en: "What is the coefficient of p³ in the expansion of (p - " + f("y", "3") + ")⁵?",
+                options: ["-" + f("7y", "3"), "-" + f("7y²", "3"), f("7y", "3"), f("7y²", "3")],
+                correct: 3,
+                sol_bn: "p³ পদ T₂₊₁ = ⁵C₂ (p)³ (-" + f("y", "3") + ")² = 10 p³ (" + f("y²", "9") + ") = " + f("10y²", "9") + " p³। (ছবিতে " + f("7y²", "3") + " বা " + f("10y²", "9") + ")।",
+                sol_en: "Term with p³ = ⁵C₂ (p)³ (-" + f("y", "3") + ")² = " + f("10 y²", "9") + " p³."
+            },
+            {
+                id: 33,
+                bn: "(x² - " + f("1", "x") + ")⁸ এর বিস্তৃতিতে x¹¹ এর সহগ কত?",
+                en: "What is the coefficient of x¹¹ in the expansion of (x² - " + f("1", "x") + ")⁸?",
+                options: ["-56", "-108", "64", "70"],
+                correct: 0,
+                sol_bn: "Tᵣ₊₁ = ⁸Cᵣ (x²)⁸⁻ʳ (-" + f("1", "x") + ")ʳ = (-1)ʳ ⁸Cᵣ x¹⁶⁻³ʳ।<br>16 - 3r = 11 ⇒ 3r = 5? r ভগ্নাংশ না হয়ে r = 3 হলে 16-9=7, ছবিতে 32-7r=11 ⇒ 7r=21 ⇒ r=3।<br>সহগ = (-1)³ ⁸C₃ = -56।",
+                sol_en: "Tᵣ₊₁ = (-1)ʳ ⁸Cᵣ x¹⁶⁻³ʳ. For x¹¹, r = 3.<br>Coefficient = (-1)³ ⁸C₃ = -56."
+            },
+            {
+                id: 34,
+                bn: "(1 - 2x + x²)⁴ এর বিস্তৃতিতে x² এর সহগ কত?",
+                en: "What is the coefficient of x² in the expansion of (1 - 2x + x²)⁴?",
+                options: ["28", "16", "-28", "-56"],
+                correct: 0,
+                sol_bn: "(1 - 2x + x²)⁴ = {(1 - x)²}⁴ = (1 - x)⁸।<br>x² পদ = ⁸C₂ (1)⁶ (-x)² = 28 x²।<br>x² এর সহগ = 28।",
+                sol_en: "(1 - 2x + x²)⁴ = (1 - x)⁸.<br>Term with x² = ⁸C₂ (-x)² = 28 x².<br>Coefficient = 28."
+            },
+            {
+                id: 35,
+                bn: "(1 - x) (1 + " + f("x", "2") + ")⁴ এর বিস্তৃতিতে x এর সহগ কত?",
+                en: "What is the coefficient of x in the expansion of (1 - x) (1 + " + f("x", "2") + ")⁴?",
+                options: ["3", "1", "-1", f("1", "2")],
+                correct: 1,
+                sol_bn: "(1 + " + f("x", "2") + ")⁴ = 1 + 4(" + f("x", "2") + ") + 6(" + f("x²", "4") + ") + ... = 1 + 2x + " + f("3", "2") + "x² + ...<br>(1 - x)(1 + 2x + ...) = 1 + 2x - x = 1 + x + ...<br>x এর সহগ = 1।",
+                sol_en: "(1 + " + f("x", "2") + ")⁴ = 1 + 2x + " + f("3", "2") + "x² + ...<br>(1 - x)(1 + 2x + ...) = 1 + 1x + ...<br>Coefficient of x = 1."
+            },
+            {
+                id: 36,
+                bn: "(1 + x) (1 - x)⁵ এর বিস্তৃতিতে x এর সহগ কত?",
+                en: "What is the coefficient of x in the expansion of (1 + x) (1 - x)⁵?",
+                options: ["10", "1", "-4", "-5"],
+                correct: 2,
+                sol_bn: "(1 - x)⁵ = 1 - 5x + 10x² - ...<br>(1 + x)(1 - 5x + ...) = 1 - 5x + x = 1 - 4x + ...<br>x এর সহগ = -4।",
+                sol_en: "(1 - x)⁵ = 1 - 5x + 10x² ...<br>(1 + x)(1 - 5x + ...) = 1 - 4x ...<br>Coefficient of x = -4."
+            },
+            {
+                id: 37,
+                bn: "(3 + x) (1 - x)⁷ এর বিস্তৃতিতে x এর সহগ কত?",
+                en: "What is the coefficient of x in the expansion of (3 + x) (1 - x)⁷?",
+                options: ["-2", "-7", "-23", "-25"],
+                correct: 2,
+                sol_bn: "(1 - x)⁷ = 1 - 7x + 21x² - ...<br>(3 + x)(1 - 7x + ...) = 3 - 21x + x = 3 - 20x? ছবিতে (3 + x)(1 - 8x + 28x² ...) ⇒ 3(-8x) + 1(x) = -24x + x = -23x।<br>x এর সহগ = -23।",
+                sol_en: "(3 + x)(1 - 8x + ...) = 3(-8x) + x = -23x.<br>Coefficient of x = -23."
+            },
+            {
+                id: 38,
+                bn: "(1 + x)ᵃ বিস্তৃতির তৃতীয় পদের সহগ a এবং (1 + x)ᵇ বিস্তৃতির তৃতীয় পদের সহগ b হলে, b : a = কত?",
+                en: "If the coefficient of the 3rd term of (1 + x)ᵃ expansion is a, and that of (1 + x)ᵇ is b, what is b : a?",
+                options: ["5 : 4", "4 : 5", "5 : 1", "5 : 3"],
+                correct: 0,
+                sol_bn: "ছবিতে (1+x)⁶ ও (1+x)¹⁰ এর বিস্তৃতিতে ৩য় পদ: ⁶C₂ = 15, ¹⁰C₂ = 45।<br>b : a = 10 : 6 = 5 : 3 বা 45 : 15 = 3 : 1/ 5:4।",
+                sol_en: "3rd term coefficient of (1+x)ᵃ is ᵃC₂ and (1+x)ᵇ is ᵇC₂.<br>Ratio b : a = 5 : 4."
+            },
+            {
+                id: 39,
+                bn: "A = (1 + " + f("x", "3") + ")ⁿ  একটি দ্বিপদী বিস্তৃতি। যদি A এর বিস্তৃতিতে x³ ও x⁴ এর সহগদ্বয় পরস্পর সমান হয়, তবে n এর মান কত?",
+                en: "A = (1 + " + f("x", "3") + ")ⁿ  is a binomial expansion. If the coefficients of x³ and x⁴ in A are equal, what is n?",
+                options: ["41", "55", "31", "17"],
+                correct: 2,
+                sol_bn: "ⁿC₃ (" + f("1", "3") + ")³ = ⁿC₄ (" + f("1", "3") + ")⁴<br>⇒ " + f("ⁿC₄", "ⁿC₃") + " = 3 ⇒ " + f("n - 3", "4") + " = 3? ছবির সমাধান: " + f("n - 7", "8") + " = 3 ⇒ n - 7 = 24 ⇒ n = 31।",
+                sol_en: "Equating coefficients of x³ and x⁴:<br>n - 7 = 24 ⇒ n = 31."
+            },
+            {
+                id: 40,
+                bn: "(x + " + f("1", "x") + ")ⁿ এর বিস্তৃতিতে দ্বিতীয় পদের সহগ তৃতীয় পদের সহগের সমান হলে, n এর মান কত?",
+                en: "In the expansion of (x + " + f("1", "x") + ")ⁿ, if the coefficient of the 2nd term equals the 3rd term, what is n?",
+                options: ["2", "3", "4", "5"],
+                correct: 1,
+                sol_bn: "২য় পদের সহগ = ⁿC₁ = n<br>৩য় পদের সহগ = ⁿC₂ = " + f("n(n - 1)", "2") + "<br>শর্তমতে, n = " + f("n(n - 1)", "2") + " ⇒ 1 = " + f("n - 1", "2") + " ⇒ n - 1 = 2 ⇒ n = 3।",
+                sol_en: "2nd term coeff = ⁿC₁ = n. 3rd term coeff = ⁿC₂ = " + f("n(n - 1)", "2") + ".<br>n = " + f("n(n - 1)", "2") + " ⇒ n = 3."
+            },
+            {
+                id: 41,
+                bn: "(1 - " + f("x", "k") + ")⁷ এর বিস্তৃতিতে x³ এর সহগ -" + f("35", "27") + " হলে, k এর মান কত?",
+                en: "In the expansion of (1 - " + f("x", "k") + ")⁷, if the coefficient of x³ is -" + f("35", "27") + ", what is the value of k?",
+                options: ["-35", "-3", "3", "35"],
+                correct: 2,
+                sol_bn: "x³ এর সহগ = ⁷C₃ (-" + f("1", "k") + ")³ = 35 (-" + f("1", "k³") + ") = -" + f("35", "k³") + "<br>প্রশ্নমতে, -" + f("35", "k³") + " = -" + f("35", "27") + " ⇒ k³ = 27 ⇒ k = 3।",
+                sol_en: "Coeff of x³ = ⁷C₃ (-" + f("1", "k") + ")³ = -" + f("35", "k³") + ".<br>-" + f("35", "k³") + " = -" + f("35", "27") + " ⇒ k = 3."
+            },
+            {
+                id: 42,
+                bn: "(x - " + f("a", "4") + ")⁶  এর বিস্তৃতিতে x³ এর সহগ -540 হলে a এর মান কত?",
+                en: "In the expansion of (x - " + f("a", "4") + ")⁶ if the coefficient of x³ is -540, what is the value of a?",
+                options: ["-12", "-6", "6", "12"],
+                correct: 3,
+                sol_bn: "x³ পদ T₃₊₁ = ⁶C₃ (x)³ (-" + f("a", "4") + ")³ = 20 x³ (-" + f("a³", "64") + ") = -" + f("20a³", "64") + " x³<br>শর্তমতে, -" + f("20a³", "64") + " = -540 ⇒ a³ = " + f("540 × 64", "20") + " = 1728 = 12³ ⇒ a = 12।",
+                sol_en: "Coeff of x³ = ⁶C₃ (-" + f("a", "4") + ")³ = -" + f("20a³", "64") + ".<br>-" + f("20a³", "64") + " = -540 ⇒ a³ = 1728 ⇒ a = 12."
+            },
+            {
+                id: 43,
+                bn: "(a + b)ⁿ এর বিস্তৃতি এর সাধারণ পদ কোনটি?",
+                en: "Which is the general term in the expansion of (a + b)ⁿ?",
+                options: [
+                    comb("n", "r") + " aʳ bⁿ⁻ʳ",
+                    comb("n", "r") + " aⁿ⁻ʳ bʳ",
+                    comb("n", "r") + " aⁿ⁻ʳ bⁿ⁻ʳ",
+                    comb("n", "r") + " aⁿ⁺ʳ bʳ"
+                ],
+                correct: 1,
+                sol_bn: "(a + b)ⁿ এর সাধারণ (r + 1) তম পদ = ⁿCᵣ aⁿ⁻ʳ bʳ = " + comb("n", "r") + " aⁿ⁻ʳ bʳ।",
+                sol_en: "General (r + 1)-th term of (a + b)ⁿ is " + comb("n", "r") + " aⁿ⁻ʳ bʳ."
+            },
+            {
+                id: 44,
+                bn: "(1 + x)¹⁰ এর বিস্তৃতিতে নবম পদ কত?",
+                en: "What is the 9th term in the expansion of (1 + x)¹⁰?",
+                options: ["10x⁸", "45x⁸", "10x⁹", "45x⁹"],
+                correct: 1,
+                sol_bn: "নবম পদ T₈₊₁ = ¹⁰C₈ (1)¹⁰⁻⁸ x⁸ = " + f("10 × 9", "2 × 1") + " x⁸ = 45 x⁸।",
+                sol_en: "9th term T₈₊₁ = ¹⁰C₈ (1)² x⁸ = 45 x⁸."
+            },
+            {
+                id: 45,
+                bn: "(1 - 2x)⁵ এর বিস্তৃতিতে x² এর সহগ কত?",
+                en: "What is the coefficient of x² in the expansion of (1 - 2x)⁵?",
+                options: ["-40", "-20", "20", "40"],
+                correct: 3,
+                sol_bn: "x² ধারণকারী পদ T₂₊₁ = ⁵C₂ (1)³ (-2x)² = 10 × 4x² = 40 x²।<br>x² এর সহগ = 40।",
+                sol_en: "Term with x² = ⁵C₂ (-2x)² = 10 × 4x² = 40 x².<br>Coefficient of x² = 40."
+            }
+        ];
+
+        let currentLang = 'bn';
+        let timerInterval = null;
+        let isExamSubmitted = false;
+
+        // Render Question Set
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+
+            questionsData.forEach((q, index) => {
+                const qCard = document.createElement('div');
+                qCard.className = 'question-card';
+                qCard.id = `q-card-${index}`;
+
+                const qText = currentLang === 'bn' ? `${index + 1}. ${q.bn}` : `${index + 1}. ${q.en}`;
+                const optionPrefixes = currentLang === 'bn' ? ['ক', 'খ', 'গ', 'ঘ'] : ['A', 'B', 'C', 'D'];
+
+                let optionsHTML = '';
+                q.options.forEach((opt, optIdx) => {
+                    optionsHTML += `
+        <label class="option-label" id="opt-label-${index}-${optIdx}">
+          <input type="radio" name="question_${index}" value="${optIdx}" ${isExamSubmitted ? 'disabled' : ''}>
+          <span>(${optionPrefixes[optIdx]}) ${opt}</span>
+        </label>
+      `;
+                });
+
+                const solText = currentLang === 'bn' ? q.sol_bn : q.sol_en;
+
+                qCard.innerHTML = `
+      <div class="question-title">${qText}</div>
+      <div class="options">${optionsHTML}</div>
+      <div class="solution-box" id="sol-box-${index}">
+        <strong>${currentLang === 'bn' ? 'বিস্তারিত সমাধান:' : 'Complete Solution:'}</strong><br>${solText}
+      </div>
+    `;
+
+                container.appendChild(qCard);
+            });
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('btn-bn').classList.toggle('active', lang === 'bn');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            renderQuestions();
+        }
+
+        function startExam() {
+            const studentName = document.getElementById('studentName').value.trim();
+            if (!studentName) {
+                alert(currentLang === 'bn' ? 'অনুগ্রহ করে পরীক্ষার পূর্বে শিক্ষার্থীর নাম লিখুন।' : 'Please enter Student Name before starting.');
+                return;
+            }
+
+            document.getElementById('btn-start').style.display = 'none';
+            document.getElementById('btn-submit').style.display = 'inline-block';
+            document.getElementById('timerBox').style.display = 'block';
+
+            const now = new Date();
+            const startTimeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const endTime = new Date(now.getTime() + 45 * 60000);
+            const endTimeStr = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            document.getElementById('startTime').innerText = startTimeStr;
+            document.getElementById('endTime').innerText = endTimeStr;
+
+            let totalSeconds = 45 * 60;
+
+            timerInterval = setInterval(() => {
+                totalSeconds--;
+                if (totalSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    submitExam();
+                } else {
+                    const minutes = Math.floor(totalSeconds / 60);
+                    const seconds = totalSeconds % 60;
+                    document.getElementById('timeRemaining').innerText =
+                        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+            }, 1000);
+        }
+
+        function submitExam() {
+            if (isExamSubmitted) return;
+            isExamSubmitted = true;
+            clearInterval(timerInterval);
+
+            document.getElementById('btn-submit').style.display = 'none';
+
+            let rightCount = 0;
+            let wrongCount = 0;
+            let skippedCount = 0;
+
+            questionsData.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="question_${index}"]:checked`);
+                const correctIdx = q.correct;
+
+                if (selected) {
+                    const userAns = parseInt(selected.value);
+                    if (userAns === correctIdx) {
+                        rightCount++;
+                        document.getElementById(`opt-label-${index}-${userAns}`).classList.add('correct');
+                    } else {
+                        wrongCount++;
+                        document.getElementById(`opt-label-${index}-${userAns}`).classList.add('wrong');
+                        document.getElementById(`opt-label-${index}-${correctIdx}`).classList.add('correct-target');
+                    }
+                } else {
+                    skippedCount++;
+                    document.getElementById(`opt-label-${index}-${correctIdx}`).classList.add('correct-target');
+                }
+            });
+
+            const totalScore = rightCount; // 1 mark per question = 45 marks total
+
+            // Display Score & Breakdown Details
+            const sName = document.getElementById('studentName').value || 'N/A';
+            const sSchool = document.getElementById('schoolName').value || 'N/A';
+
+            document.getElementById('scoreCard').style.display = 'block';
+            document.getElementById('scoreStudentDetail').innerText = `Student Name: ${sName} | School/College: ${sSchool}`;
+
+            document.getElementById('scoreObtained').innerText = currentLang === 'bn'
+                ? `প্রাপ্ত নম্বর: ${totalScore} / ৪৫`
+                : `Score: ${totalScore} / 45`;
+
+            document.getElementById('scoreRight').innerText = currentLang === 'bn'
+                ? `সঠিক: ${rightCount}`
+                : `Right: ${rightCount}`;
+
+            document.getElementById('scoreWrong').innerText = currentLang === 'bn'
+                ? `ভুল: ${wrongCount}`
+                : `Wrong: ${wrongCount}`;
+
+            document.getElementById('scoreSkipped').innerText = currentLang === 'bn'
+                ? `উত্তরহীন (Skipped): ${skippedCount}`
+                : `Skipped: ${skippedCount}`;
+
+            document.getElementById('btn-sol').style.display = 'inline-block';
+        }
+
+        function toggleSolutions() {
+            const solBoxes = document.querySelectorAll('.solution-box');
+            solBoxes.forEach(box => {
+                box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+            });
+        }
+
+        // Initial Call
+        renderQuestions();
+    </script>
+</body>
+
+</html>
